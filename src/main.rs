@@ -4,6 +4,13 @@ use bevy::{
     window::{PresentMode},
 };
 
+#[derive(Debug, Clone, Eq, PartialEq, Hash)]
+pub enum VictoryOrDefeat {
+	VICTORY,
+	NONE,
+	DEFEAT
+}
+
 fn main() {
     App::new()
     // Set antialiasing to use 4 samples
@@ -21,5 +28,46 @@ fn main() {
         }),
         ..default()
     }))
+    .add_startup_system(setup)
+    .add_startup_system(create_board)
     .run();
+}
+
+fn setup(
+    mut commands: Commands,
+    mut meshes: ResMut<Assets<Mesh>>,
+    mut materials: ResMut<Assets<StandardMaterial>>,
+) {
+    // plane
+    commands.spawn(PbrBundle {
+        mesh: meshes.add(shape::Plane::from_size(8.0).into()),
+        material: materials.add(Color::rgb(1., 0.9, 0.9).into()),
+        transform: Transform::from_translation(Vec3::new(4., 0., 4.)),
+        ..default()
+    });
+    // camera
+    commands.spawn(Camera3dBundle {
+        transform: Transform::from_matrix(Mat4::from_rotation_translation(
+            Quat::from_xyzw(-0.3, -0.5, -0.3, 0.5).normalize(),
+            Vec3::new(-7.0, 20.0, 4.0),
+        )),
+        ..default()
+    });
+    // light
+    commands.spawn(PointLightBundle {
+            point_light: PointLight {
+                intensity: 1500.0,
+                shadows_enabled: true,
+                ..default()
+            },
+        transform: Transform::from_xyz(4.0, 8.0, 4.0),
+        ..default()
+    });
+}
+
+fn create_board(
+    mut commands: Commands,
+    mut meshes: ResMut<Assets<Mesh>>,
+    mut materials: ResMut<Assets<StandardMaterial>>,
+) {
 }
