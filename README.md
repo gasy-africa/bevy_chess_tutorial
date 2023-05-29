@@ -1,8 +1,6 @@
 # bevy_chess_tutorial
 
-:round_pushpin: Init
-
-[Init](.docs/INIT.md)
+:round_pushpin: [Init](.docs/INIT.md)ializing the project
 
 # References
 
