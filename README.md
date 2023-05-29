@@ -24,7 +24,7 @@ fn main() {
     // Set antialiasing to use 4 samples
     .insert_resource(Msaa::default())
 ```
-* Change the :
+* Change the `DefaultPlugin` to add the `WindowPlugin`:
 
 - the import 
 
@@ -37,7 +37,7 @@ use bevy::{
 
 - default plugin 
 
-```rusts
+```rust
     .add_plugins(DefaultPlugins.set(WindowPlugin {
         primary_window: Some(Window {
             title: "Chess!".into(),
