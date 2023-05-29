@@ -15,6 +15,25 @@ cargo new bevy_chess_tutorial && cd bevy_chess_tutorial
 cargo add bevy
 ```
 
+:round_pushpin: Faster compiler
+
+- [ ] The normal linker is a bit slow, so we can swap it out for the LLD Linker to get a speedup:
+
+```
+brew install michaeleisel/zld/zld 
+```
+
+```yaml
+==> michaeleisel/zld/zld: stable 1.3.9
+A faster version of ld, Apple's linker
+https://github.com/michaeleisel/zld
+/usr/local/Cellar/zld/1.3.9 (5 files, 2.8MB) *
+  Built from source on 2023-05-06 at 14:05:49
+From: https://github.com/michaeleisel/homebrew-zld/blob/HEAD/Formula/zld.rb
+==> Dependencies
+Build: cmake ✘
+```
+
 - [ ] Enable `nightly` Rust
 
 ```
@@ -62,15 +81,24 @@ info: installing component 'rustfmt'
 info: checking for self-update
 ```
 
+- [ ] Override
+
+```
+rustup override set nightly 
+```
+
+- [ ] Check
+
 ```
 rustup toolchain list      
 ```
 > Returns :
 ```yaml
 stable-x86_64-apple-darwin (default)
-nightly-x86_64-apple-darwin
+nightly-x86_64-apple-darwin (override)
 ```
 
+- [ ] Copy the contents of this [file](https://github.com/bevyengine/bevy/blob/main/.cargo/config_fast_builds) into bevy_chess/.cargo/config.toml
 
 # References
 
