@@ -62,6 +62,16 @@ info: installing component 'rustfmt'
 info: checking for self-update
 ```
 
+```
+rustup toolchain list      
+```
+> Returns :
+```yaml
+stable-x86_64-apple-darwin (default) (override)
+nightly-x86_64-apple-darwin
+```
+
+
 # References
 
 - [ ] [Chess game in Rust using Bevy](https://caballerocoll.com/blog/bevy-chess-tutorial)
