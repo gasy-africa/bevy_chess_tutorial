@@ -99,7 +99,3 @@ nightly-x86_64-apple-darwin (override)
 ```
 
 - [ ] Copy the contents of this [file](https://github.com/bevyengine/bevy/blob/main/.cargo/config_fast_builds) into bevy_chess/.cargo/config.toml
-
-# References
-
-- [ ] [Chess game in Rust using Bevy](https://caballerocoll.com/blog/bevy-chess-tutorial)
