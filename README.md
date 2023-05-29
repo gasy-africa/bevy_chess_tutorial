@@ -67,7 +67,7 @@ rustup toolchain list
 ```
 > Returns :
 ```yaml
-stable-x86_64-apple-darwin (default) (override)
+stable-x86_64-apple-darwin (default)
 nightly-x86_64-apple-darwin
 ```
 
