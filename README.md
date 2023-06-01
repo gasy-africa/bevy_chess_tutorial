@@ -113,13 +113,16 @@ fn main() {
 }
 ```
 
-## Making a game board
+## [Making a game board](https://caballerocoll.com/blog/bevy-chess-tutorial/#:~:text="Making a game board")
+
+note: `#[warn(unused_variables)]` on by default 
+      prefix it with an underscore: `_commands`
 
 ```rust
 fn create_board(
-    commands: &mut Commands,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
+    mut _commands: Commands,
+    mut _meshes: ResMut<Assets<Mesh>>,
+    mut _materials: ResMut<Assets<StandardMaterial>>,
 ) {
 }
 ```

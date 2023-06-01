@@ -66,8 +66,8 @@ fn setup(
 }
 
 fn create_board(
-    mut commands: Commands,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
+    mut _commands: Commands,
+    mut _meshes: ResMut<Assets<Mesh>>,
+    mut _materials: ResMut<Assets<StandardMaterial>>,
 ) {
 }
