@@ -164,7 +164,7 @@ fn create_board(
 }
 ```
 
-## [Adding pieces](https://caballerocoll.com/blog/bevy-chess-tutorial/#:~:text=Adding,pieces)
+## [Adding pieces](https://caballerocoll.com/blog/bevy-chess-tutorial/#:~:text=movements,pieces)
 
 ```rust
 fn create_pieces(
