@@ -28,7 +28,7 @@ fn main() {
         }),
         ..default()
     }))
-    .add_startup_systems((setup,create_board))
+    .add_startup_systems((setup,create_board,create_pieces))
     .run();
 }
 
@@ -108,4 +108,35 @@ fn create_pieces(
     // Add some materials
     let white_material = materials.add(Color::rgb(1., 0.8, 0.8).into());
     let black_material = materials.add(Color::rgb(0., 0.2, 0.2).into());
+
+    commands
+    // Spawn parent entity
+    .spawn(PbrBundle {
+        transform: Transform::from_translation(Vec3::new(0.0, 0.0, 4.0)),
+        ..Default::default()
+    })
+    // Add children to the parent
+    .with_children(|parent| {
+        parent.spawn(PbrBundle {
+            mesh: king_handle.clone(),
+            material: white_material.clone(),
+            transform: {
+                let mut transform = Transform::from_translation(Vec3::new(-0.2, 0., -1.9));
+                transform.scale *= Vec3::new(0.2, 0.2, 0.2);
+                transform
+            },
+            ..Default::default()
+        });
+        parent.spawn(PbrBundle {
+            mesh: king_cross_handle.clone(),
+            material: white_material.clone(),
+            transform: {
+                let mut transform = Transform::from_translation(Vec3::new(-0.2, 0., -1.9));
+                transform.scale *= Vec3::new(0.2, 0.2, 0.2);
+                transform
+            },
+            ..Default::default()
+        });
+    });
+
 }

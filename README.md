@@ -193,9 +193,54 @@ fn create_pieces(
     // Add some materials
     let white_material = materials.add(Color::rgb(1., 0.8, 0.8).into());
     let black_material = materials.add(Color::rgb(0., 0.2, 0.2).into());
+
 }
 ```
 
+```rust
+fn create_pieces(
+    commands: &mut Commands,
+    asset_server: Res<AssetServer>,
+    mut materials: ResMut<Assets<StandardMaterial>>,
+) {
+    // Load all the meshes
+    [...]
+
+    // Add some materials
+    [...]
+
+    commands
+    // Spawn parent entity
+    .spawn(PbrBundle {
+        transform: Transform::from_translation(Vec3::new(0.0, 0.0, 4.0)),
+        ..Default::default()
+    })
+    // Add children to the parent
+    .with_children(|parent| {
+        parent.spawn(PbrBundle {
+            mesh: king_handle.clone(),
+            material: white_material.clone(),
+            transform: {
+                let mut transform = Transform::from_translation(Vec3::new(-0.2, 0., -1.9));
+                transform.scale *= Vec3::new(0.2, 0.2, 0.2);
+                transform
+            },
+            ..Default::default()
+        });
+        parent.spawn(PbrBundle {
+            mesh: king_cross_handle.clone(),
+            material: white_material.clone(),
+            transform: {
+                let mut transform = Transform::from_translation(Vec3::new(-0.2, 0., -1.9));
+                transform.scale *= Vec3::new(0.2, 0.2, 0.2);
+                transform
+            },
+            ..Default::default()
+        });
+    });
+```
+
+Don't forget to add `create_pieces` as a startup system! If you run the game now you should see a single white King on it's square:
 
 # References
 
