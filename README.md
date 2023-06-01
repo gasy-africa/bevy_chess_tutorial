@@ -2,7 +2,7 @@
 
 :round_pushpin: [Init](.docs/INIT.md)ializing the project
 
-## Getting started
+## [Getting started](https://caballerocoll.com/blog/bevy-chess-tutorial/#:~:text=Getting,started)
 
 - [ ] Add to `src/main.rs`
 
@@ -16,7 +16,7 @@ fn main() {
 }
 ```
 
-## Changing Window settings
+## [Changing Window settings](https://caballerocoll.com/blog/bevy-chess-tutorial/#:~:text=Changing,settings)
 
 * Add the `Msaa` resource (default is 4)
 
@@ -133,3 +133,4 @@ fn create_board(
 - [ ] [bevy/examples/window
 /window_settings.rs](https://github.com/bevyengine/bevy/blob/latest/examples/window/window_settings.rs)
 - [ ] [3D / 3d_scene](https://bevyengine.org/examples/3d/3d-scene/)
+- [ ] [What exactly is the `#:~:text=` location hash in an URL?](https://stackoverflow.com/questions/62161819/what-exactly-is-the-text-location-hash-in-an-url)
