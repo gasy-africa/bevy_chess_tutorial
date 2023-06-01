@@ -440,7 +440,7 @@ fn create_pieces(
 
     // Add some materials
     [...]
-    
+
     spawn_rook(
         &mut commands,
         white_material.clone(),
@@ -565,6 +565,8 @@ fn create_pieces(
 ```
 
 <img src=.docs/images/chess_board_full.png width='' height='' > </img>
+
+## [Selection plugin](https://caballerocoll.com/blog/bevy-chess-tutorial/#:~:text=Selection,plugin)
 
 
 # References
