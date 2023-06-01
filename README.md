@@ -41,7 +41,7 @@ use bevy::{
     .add_plugins(DefaultPlugins.set(WindowPlugin {
         primary_window: Some(Window {
             title: "Chess!".into(),
-            resolution: (1600., 1600.).into(),
+            resolution: (800., 800.).into(),
             present_mode: PresentMode::AutoVsync,
             // Tells wasm to resize the window according to the available canvas
             fit_canvas_to_parent: true,
@@ -118,14 +118,56 @@ fn main() {
 note: `#[warn(unused_variables)]` on by default 
       prefix it with an underscore: `_commands`
 
+For that, we'll first split the current setup system into two:
+
 ```rust
-fn create_board(
-    mut _commands: Commands,
-    mut _meshes: ResMut<Assets<Mesh>>,
-    mut _materials: ResMut<Assets<StandardMaterial>>,
+    .add_startup_systems((setup,create_board))
+```
+
+- [ ] Removing the `plane` from `setup()`
+
+```rust
+fn setup(
+    mut commands: Commands,
 ) {
+...
 }
 ```
+
+- [ ] Adding the `board` (plane)
+
+```rust
+fn create_board(
+    mut commands: Commands,
+    mut meshes: ResMut<Assets<Mesh>>,
+    mut materials: ResMut<Assets<StandardMaterial>>,
+) {
+    // Add meshes and materials
+    let mesh = meshes.add(shape::Plane::from_size(1.).into());
+    let white_material = materials.add(Color::rgb(1., 0.9, 0.9).into());
+    let black_material = materials.add(Color::rgb(0., 0.1, 0.1).into());
+
+    // Spawn 64 squares
+    for i in 0..8 {
+        for j in 0..8 {
+            commands.spawn(PbrBundle {
+                mesh: mesh.clone(),
+                // Change material according to position to get alternating pattern
+                material: if (i + j + 1) % 2 == 0 {
+                    white_material.clone()
+                } else {
+                    black_material.clone()
+                },
+                transform: Transform::from_translation(Vec3::new(i as f32, 0., j as f32)),
+                ..Default::default()
+            });
+        }
+    }
+}
+```
+
+
+
 
 # References
 
