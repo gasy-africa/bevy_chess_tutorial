@@ -113,7 +113,7 @@ fn main() {
 }
 ```
 
-## [Making a game board](https://caballerocoll.com/blog/bevy-chess-tutorial/#:~:text="Making a game board")
+## [Making a game board](https://caballerocoll.com/blog/bevy-chess-tutorial/#:~:text=Making a game board)
 
 note: `#[warn(unused_variables)]` on by default 
       prefix it with an underscore: `_commands`
