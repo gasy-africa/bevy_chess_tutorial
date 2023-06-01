@@ -53,7 +53,7 @@ use bevy::{
     }))
 ```
 
-## Adding a camera and a plane
+## [Adding a camera and a plane](https://caballerocoll.com/blog/bevy-chess-tutorial/#:~:text=Adding,plane)
 
 ```rust
 fn setup(
