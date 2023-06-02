@@ -8,7 +8,6 @@ description=""
 
 [dependencies]
 bevy = "0.10.1"
-#bevy = "0.9"
 
 [package.metadata.bundle]
 identifier = "com.caballerocoll.chess"
