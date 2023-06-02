@@ -48,7 +48,7 @@ fn setup(
     // light
     commands.spawn(PointLightBundle {
             point_light: PointLight {
-                intensity: 3000.0,
+                intensity: 2000.0,
                 shadows_enabled: true,
                 ..default()
             },
@@ -56,6 +56,11 @@ fn setup(
         ..default()
     });
 }
+
+// translation
+fn x_t(x: i32) -> f32 { (x + 5) as f32 } 
+fn y_t(x: i32) -> f32 { (x + 0) as f32 }
+fn z_t(x: i32) -> f32 { (x - 4) as f32 }
 
 fn create_board(
     mut commands: Commands,
@@ -70,6 +75,7 @@ fn create_board(
     // Spawn 64 squares
     for i in 0..8 {
         for j in 0..8 {
+                        
             commands.spawn(PbrBundle {
                 mesh: mesh.clone(),
                 // Change material according to position to get alternating pattern
@@ -78,7 +84,7 @@ fn create_board(
                 } else {
                     black_material.clone()
                 },
-                transform: Transform::from_translation(Vec3::new(i as f32, 0., j as f32)),
+                transform: Transform::from_translation(Vec3::new(x_t(i), y_t(0), z_t(j))),
                 ..Default::default()
             });
         }
@@ -116,52 +122,52 @@ fn create_pieces(
         &mut commands,
         white_material.clone(),
         rook_handle.clone(),
-        Vec3::new(0., 0., 0.),
+        Vec3::new(x_t(0), y_t(0), z_t(0)),
     );
     spawn_knight(
         &mut commands,
         white_material.clone(),
         knight_1_handle.clone(),
         knight_2_handle.clone(),
-        Vec3::new(0., 0., 1.),
+        Vec3::new(x_t(0), y_t(0), z_t(1)),
     );
     spawn_bishop(
         &mut commands,
         white_material.clone(),
         bishop_handle.clone(),
-        Vec3::new(0., 0., 2.),
+        Vec3::new(x_t(0), y_t(0), z_t(2)),
     );
     spawn_queen(
         &mut commands,
         white_material.clone(),
         queen_handle.clone(),
-        Vec3::new(0., 0., 3.),
+        Vec3::new(x_t(0), y_t(0), z_t(3)),
     );
     spawn_king(
         &mut commands,
         white_material.clone(),
         king_handle.clone(),
         king_cross_handle.clone(),
-        Vec3::new(0., 0., 4.),
+        Vec3::new(x_t(0), y_t(0), z_t(4)),
     );
     spawn_bishop(
         &mut commands,
         white_material.clone(),
         bishop_handle.clone(),
-        Vec3::new(0., 0., 5.),
+        Vec3::new(x_t(0), y_t(0), z_t(5)),
     );
     spawn_knight(
         &mut commands,
         white_material.clone(),
         knight_1_handle.clone(),
         knight_2_handle.clone(),
-        Vec3::new(0., 0., 6.),
+        Vec3::new(x_t(0), y_t(0), z_t(6)),
     );
     spawn_rook(
         &mut commands,
         white_material.clone(),
         rook_handle.clone(),
-        Vec3::new(0., 0., 7.),
+        Vec3::new(x_t(0), y_t(0), z_t(7)),
     );
 
     for i in 0..8 {
@@ -169,7 +175,7 @@ fn create_pieces(
             &mut commands,
             white_material.clone(),
             pawn_handle.clone(),
-            Vec3::new(1., 0., i as f32),
+            Vec3::new(x_t(1), y_t(0), z_t(i)),
         );
     }
 
@@ -177,52 +183,52 @@ fn create_pieces(
         &mut commands,
         black_material.clone(),
         rook_handle.clone(),
-        Vec3::new(7., 0., 0.),
+        Vec3::new(x_t(7), y_t(0), z_t(0)),
     );
     spawn_knight(
         &mut commands,
         black_material.clone(),
         knight_1_handle.clone(),
         knight_2_handle.clone(),
-        Vec3::new(7., 0., 1.),
+        Vec3::new(x_t(7), y_t(0), z_t(1)),
     );
     spawn_bishop(
         &mut commands,
         black_material.clone(),
         bishop_handle.clone(),
-        Vec3::new(7., 0., 2.),
+        Vec3::new(x_t(7), y_t(0), z_t(2)),
     );
     spawn_queen(
         &mut commands,
         black_material.clone(),
         queen_handle.clone(),
-        Vec3::new(7., 0., 3.),
+        Vec3::new(x_t(7), y_t(0), z_t(3)),
     );
     spawn_king(
         &mut commands,
         black_material.clone(),
         king_handle.clone(),
         king_cross_handle.clone(),
-        Vec3::new(7., 0., 4.),
+        Vec3::new(x_t(7), y_t(0), z_t(4)),
     );
     spawn_bishop(
         &mut commands,
         black_material.clone(),
         bishop_handle.clone(),
-        Vec3::new(7., 0., 5.),
+        Vec3::new(x_t(7), y_t(0), z_t(5)),
     );
     spawn_knight(
         &mut commands,
         black_material.clone(),
         knight_1_handle.clone(),
         knight_2_handle.clone(),
-        Vec3::new(7., 0., 6.),
+        Vec3::new(x_t(7), y_t(0), z_t(6)),
     );
     spawn_rook(
         &mut commands,
         black_material.clone(),
         rook_handle.clone(),
-        Vec3::new(7., 0., 7.),
+        Vec3::new(x_t(7), y_t(0), z_t(7)),
     );
 
     for i in 0..8 {
@@ -230,7 +236,7 @@ fn create_pieces(
             &mut commands,
             black_material.clone(),
             pawn_handle.clone(),
-            Vec3::new(6., 0., i as f32),
+            Vec3::new(x_t(6), y_t(0), z_t(i)),
         );
     }
 }
