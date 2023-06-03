@@ -14,6 +14,9 @@ pub enum VictoryOrDefeat {
 	DEFEAT
 }
 
+mod config;
+use config::*;
+
 fn main() {
     App::new()
     // Set antialiasing to use 4 samples
@@ -21,7 +24,7 @@ fn main() {
     .add_plugins(DefaultPlugins.set(WindowPlugin {
         primary_window: Some(Window {
             title: "Chess!".into(),
-            resolution: (600., 600.).into(),
+            resolution: RESOLUTION_SMALL.into(),
             present_mode: PresentMode::AutoVsync,
             // Tells wasm to resize the window according to the available canvas
             fit_canvas_to_parent: true,
@@ -39,10 +42,12 @@ fn setup(
     mut commands: Commands,
 ) {
     commands.spawn(Camera3dBundle {
-        transform: Transform::from_matrix(Mat4::from_rotation_translation(
+        transform: Transform::from_matrix(
+            Mat4::from_rotation_translation(
             Quat::from_xyzw(-0.3, -0.5, -0.3, 0.5).normalize(),
             Vec3::new(-7.0, 20.0, 4.0),
-        )),
+            )
+        ),
         ..default()
     });
     // light
@@ -52,15 +57,11 @@ fn setup(
                 shadows_enabled: true,
                 ..default()
             },
-        transform: Transform::from_xyz(4.0, 8.0, 4.0),
+        transform: Transform::from_xyz( LIGHT_SMALL.0,LIGHT_SMALL.1,LIGHT_SMALL.2),
+        // transform: Transform::from_xyz( LIGHT_LARGE.0,LIGHT_LARGE.1,LIGHT_LARGE.2),
         ..default()
     });
 }
-
-// translation
-fn x_t(x: i32) -> f32 { (x + 5) as f32 } 
-fn y_t(x: i32) -> f32 { (x + 0) as f32 }
-fn z_t(x: i32) -> f32 { (x - 4) as f32 }
 
 fn create_board(
     mut commands: Commands,
